@@ -1,12 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="quiz">
+      <p class="number">第{{ current }}問</p>
+      <p class="question">{{ questions[current - 1].question }}</p>
+      <ul>
+        <li v-on:click="selectAnswer" v-for="(question, index) in questions[current - 1].answers"><span>{{ index + 1 }}</span>{{ question }}</li>
+      </ul>
     </div>
-    <router-view/>
   </div>
 </template>
+
+<script>
+// import App from './components/AnswerButton.vue'
+
+export default {
+  name: 'app',
+  data: function(){
+    return {
+      correctAnswer: 0,
+      current: 1,
+      questionLength: 3,
+      questions: [
+        {
+          question: "ノンカロリーは何カロリー？",
+          answers: [
+            "0カロリー",
+            "5キロカロリー未満",
+            "10キロカロリー未満"
+          ],
+          answer: 2
+        },
+        {
+          question: "つぎのうちで肉の焼き加減を表す言葉はどれ？",
+          answers: [
+            "イエロー",
+            "レッド",
+            "ブルー"
+          ],
+          answer: 3
+        },
+        {
+          question: "チキンナゲットのナゲットって何？",
+          answers: [
+            "ねりもの",
+            "判子（ハンコ）",
+            "金塊"
+          ],
+          answer: 3
+        }
+      ]
+    }
+  },
+  methods: {
+    selectAnswer: function(){
+      this.current ++;
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
