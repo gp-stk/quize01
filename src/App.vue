@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div class="quiz">
-      <p class="number">第{{ current }}問</p>
-      <p class="question">{{ questions[current - 1].question }}</p>
+      <p class="number">第{{ current + 1 }}問</p>
+      <p class="question">{{ questions[current].question }}</p>
       <ul>
-        <li v-on:click="selectAnswer" v-for="(question, index) in questions[current - 1].answers"><span>{{ index + 1 }}</span>{{ question }}</li>
+        <li v-on:click="selectAnswer(index)" v-for="(question, index) in questions[current].answers" v-bind:key="question.id"><span>{{ index + 1 }}:</span>{{ question }}</li>
       </ul>
     </div>
   </div>
@@ -18,7 +18,7 @@ export default {
   data: function(){
     return {
       correctAnswer: 0,
-      current: 1,
+      current: 0,
       questionLength: 3,
       questions: [
         {
@@ -52,8 +52,18 @@ export default {
     }
   },
   methods: {
-    selectAnswer: function(){
-      this.current ++;
+    selectAnswer: function(index){
+      if(index == this.questions[this.current].answer - 1){
+        this.correctAnswer ++
+      }
+      
+      if(this.current == this.questionLength - 1){
+        alert(this.correctAnswer);
+      } else {
+        this.current ++
+      }
+
+
     }
   }
 }
@@ -64,17 +74,5 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>
