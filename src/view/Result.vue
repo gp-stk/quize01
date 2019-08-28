@@ -26,6 +26,7 @@ export default {
   left: 0;
   p {
     font-size: 28px;
+    color: #fff;
     margin: 0 0 10px;
   }
 }

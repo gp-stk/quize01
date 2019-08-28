@@ -87,7 +87,7 @@ export default {
   box-sizing: border-box;
 }
 body {
-  background: #2f89fc;
+  background: #000;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -95,7 +95,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .box {
-  background: #fff;
+  background: #282828;
   width: 100%;
   max-width: 600px;
   min-height: 400px;
@@ -106,6 +106,7 @@ body {
 }
 .quiz {
   text-align: center;
+  color: #fff;
   &.finish {
     display: none;
   }
@@ -124,6 +125,7 @@ body {
   padding: 0;
   li {
     list-style: none;
+    color: #000;
     background: #eee;
     text-align: left;
     margin: 0 0 10px;
